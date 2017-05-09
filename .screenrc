@@ -1,0 +1,18 @@
+startup_message off
+
+#show hardstatus at the bottom of the terminal.
+shelltitle "$ |bash"
+hardstatus alwayslastline "[%02c] %`%-w%{=b bw}%n %t%{-}%+w"
+#hardstatus alwayslastline "%{=r dd}%-Lw%{= BW}%50>%n%f* %t%{-}%+Lw%<"
+hardstatus off
+
+#turn off visual bell.
+vbell off
+
+#enable 256 colour.
+attrcolor b ".I"
+termcapinfo xterm 'Co#256:AB=\E[48;5;%dm:AF=\E[38;5;%dm'
+defbce on
+
+#clear screen after vim.
+altscreen on
