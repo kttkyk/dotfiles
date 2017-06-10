@@ -16,3 +16,6 @@ defbce on
 
 #clear screen after vim.
 altscreen on
+
+#mouse scroll
+termcapinfo xterm* ti@:te@
