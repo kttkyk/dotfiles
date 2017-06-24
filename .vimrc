@@ -40,6 +40,7 @@ call dein#add('Shougo/vimproc.vim', {'build' : 'make'})
 call dein#add('scrooloose/nerdtree')
 "call dein#add('scrooloose/syntastic')
 call dein#add('romainl/Apprentice')
+call dein#add('heavenshell/vim-pydocstring')
 
 
 call dein#end()
