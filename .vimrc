@@ -16,6 +16,7 @@ filetype plugin on
 filetype indent on
 nnoremap <silent><C-e> :NERDTreeToggle<CR>
 nnoremap :qr :QuickRun
+autocmd FileType python :inoremap # X#
 
 let g:tex_flavor = "latex"
 
