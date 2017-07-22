@@ -22,3 +22,5 @@ termcapinfo xterm* ti@:te@
 
 #bind remove to X
 bind X remove
+
+escape ^Tt
