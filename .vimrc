@@ -56,14 +56,6 @@ set t_Co=256
 syntax on
 
 
-"transparent
-autocmd vimrc_loading VimEnter,ColorScheme * highlight Normal ctermbg=NONE
-autocmd vimrc_loading VimEnter,ColorScheme * highlight NonText ctermbg=NONE
-autocmd vimrc_loading VimEnter,ColorScheme * highlight TablineSel ctermbg=NONE
-autocmd vimrc_loading VimEnter,ColorScheme * highlight LineNr ctermbg=NONE
-autocmd vimrc_loading VimEnter,ColorScheme * highlight CursorLineNr ctermbg=NONE
-
-
 let g:quickrun_config = get(g:, 'quickrun_config', {})
 let g:quickrun_config._ = {
       \ 'runner'    : 'vimproc',
@@ -77,6 +69,10 @@ let g:quickrun_config._ = {
 nnoremap <expr><silent> <C-c> quickrun#is_running() ? quickrun#sweep_sessions() : "\<C-c>"
 
 colorscheme apprentice
+
+"transparent
+hi NonText ctermbg=None
+hi Normal ctermfg=252 ctermbg=None
 
 let g:opamshare = substitute(system('opam config var share'),'\n$','','''')
 execute 'set rtp^=' . g:opamshare . '/ocp-indent/vim'
