@@ -14,9 +14,14 @@ set cursorline
 filetype on
 filetype plugin on
 filetype indent on
+
+
 nnoremap <silent><C-e> :NERDTreeToggle<CR>
 nnoremap :qr :QuickRun
+
+
 autocmd FileType python :inoremap # X#
+
 
 let g:tex_flavor = "latex"
 
@@ -49,6 +54,15 @@ call dein#end()
 filetype plugin indent on
 set t_Co=256
 syntax on
+
+
+"transparent
+autocmd vimrc_loading VimEnter,ColorScheme * highlight Normal ctermbg=NONE
+autocmd vimrc_loading VimEnter,ColorScheme * highlight NonText ctermbg=NONE
+autocmd vimrc_loading VimEnter,ColorScheme * highlight TablineSel ctermbg=NONE
+autocmd vimrc_loading VimEnter,ColorScheme * highlight LineNr ctermbg=NONE
+autocmd vimrc_loading VimEnter,ColorScheme * highlight CursorLineNr ctermbg=NONE
+
 
 let g:quickrun_config = get(g:, 'quickrun_config', {})
 let g:quickrun_config._ = {
