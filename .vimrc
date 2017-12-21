@@ -47,7 +47,8 @@ call dein#add('scrooloose/nerdtree')
 "call dein#add('scrooloose/syntastic')
 call dein#add('romainl/Apprentice')
 call dein#add('heavenshell/vim-pydocstring')
-
+call dein#add('rust-lang/rust.vim')
+call dein#add('whatyouhide/vim-gotham')
 
 call dein#end()
 
@@ -68,7 +69,7 @@ let g:quickrun_config._ = {
       \ }
 nnoremap <expr><silent> <C-c> quickrun#is_running() ? quickrun#sweep_sessions() : "\<C-c>"
 
-colorscheme apprentice
+colorscheme gotham256
 
 "transparent
 hi NonText ctermbg=None
