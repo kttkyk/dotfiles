@@ -17,7 +17,9 @@ filetype indent on
 
 
 nnoremap <silent><C-e> :NERDTreeToggle<CR>
-nnoremap :qr :QuickRun
+nnoremap :QR :QuickRun
+nnoremap :SC :SyntasticCheck
+nnoremap :SR :SyntasticReset
 
 
 autocmd FileType python :inoremap # X#
@@ -35,7 +37,6 @@ call dein#begin(expand('~/.vim/dein'))
 
 call dein#disable('Shougo/neocomplete.vim')
 call dein#disable('alvan/vim-closetag')
-call dein#disable('scrooloose/syntastic')
 
 call dein#add('Shougo/dein.vim')
 call dein#add('Shougo/neocomplete.vim')
@@ -44,7 +45,7 @@ call dein#add('Shougo/vimproc.vim', {'build' : 'make'})
 "call dein#add('thinca/vim-quickrun')
 "call dein#add('alvan/vim-closetag')
 call dein#add('scrooloose/nerdtree')
-"call dein#add('scrooloose/syntastic')
+call dein#add('vim-syntastic/syntastic')
 call dein#add('romainl/Apprentice')
 call dein#add('heavenshell/vim-pydocstring')
 call dein#add('rust-lang/rust.vim')
@@ -75,5 +76,13 @@ colorscheme gotham256
 hi NonText ctermbg=None
 hi Normal ctermfg=252 ctermbg=None
 
+"for syntastic
+
+"let g:syntastic_python_checkers = ['pyflakes', 'pep8']
+"autocmd BufNewFile,BufRead *.py let g:syntastic_check_on_open = 1
+let g:syntastic_python_checkers = ['pyflakes']
+
 let g:opamshare = substitute(system('opam config var share'),'\n$','','''')
 execute 'set rtp^=' . g:opamshare . '/ocp-indent/vim'
+
+"autocmd BufNewFile,BufRead *.tex set spell
