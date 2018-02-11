@@ -80,6 +80,7 @@ hi Normal ctermfg=252 ctermbg=None
 
 "let g:syntastic_python_checkers = ['pyflakes', 'pep8']
 "autocmd BufNewFile,BufRead *.py let g:syntastic_check_on_open = 1
+let g:syntastic_mode_map = { 'mode': 'passive' }
 let g:syntastic_python_checkers = ['pyflakes']
 
 let g:opamshare = substitute(system('opam config var share'),'\n$','','''')
