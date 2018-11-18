@@ -135,6 +135,9 @@ let g:NERDTreeDirArrowCollapsible = '-'
 let g:tex_flavor = "latex"
 autocmd BufNewFile,BufRead *.tex set spell
 
+" linker script
+autocmd BufRead,BufNewFile *.scr set filetype=ld
+
 
 if &compatible
     set nocompatible
