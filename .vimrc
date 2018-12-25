@@ -147,6 +147,11 @@ filetype plugin indent on
 set t_Co=256
 syntax on
 
+" js indent
+autocmd FileType javascript.jsx set tabstop=2
+autocmd FileType javascript.jsx set shiftwidth=2
+autocmd FileType javascript.jsx set softtabstop=2
+
 
 " Status line
 " Copied from https://itchyny.hatenablog.com/entry/20120609/1339249777
