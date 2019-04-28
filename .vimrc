@@ -16,60 +16,77 @@ filetype on
 filetype plugin on
 filetype indent on
 
-" Dein settings
-set runtimepath+=~/.vim/dein/repos/github.com/Shougo/dein.vim/
 
-call dein#begin(expand('~/.vim/dein'))
-
-"call dein#disable('Shougo/neocomplete.vim')
-"call dein#disable('alvan/vim-closetag')
-"call dein#disable('nanotech/jellybeans.vim')
-"call dein#disable('godlygeek/tabular')
-"call dein#disable('plasticboy/vim-markdown')
-
-"call dein#add('nanotech/jellybeans.vim')
-"call dein#add('thinca/vim-quickrun')
-"call dein#add('alvan/vim-closetag')
-"
-call dein#add('Shougo/dein.vim')
-call dein#add('Shougo/neocomplete.vim')
-call dein#add('Shougo/vimproc.vim', {'build' : 'make'})
-call dein#add('scrooloose/nerdtree')
-call dein#add('vim-syntastic/syntastic')
-call dein#add('romainl/Apprentice')
-call dein#add('heavenshell/vim-pydocstring')
-call dein#add('rust-lang/rust.vim')
-call dein#add('whatyouhide/vim-gotham')
-call dein#add('davidhalter/jedi-vim')
-call dein#add('plytophogy/vim-virtualenv')
-call dein#add('shime/vim-livedown')
-call dein#add('tpope/vim-markdown')
-call dein#add('zchee/deoplete-jedi')
-call dein#add('wokalski/autocomplete-flow')
-call dein#add('vim-airline/vim-airline')
-call dein#add('vim-airline/vim-airline-themes')
-call dein#add('pangloss/vim-javascript')
-call dein#add('mxw/vim-jsx')
-" call dein#add('Shougo/echodoc.vim')
-
-" Deoplete
-call dein#add('Shougo/deoplete.nvim')
-if !has('nvim')
-    call dein#add('roxma/nvim-yarp')
-    call dein#add('roxma/vim-hug-neovim-rpc')
+"dein Scripts-----------------------------
+if &compatible
+  set nocompatible               " Be iMproved
 endif
 
-call dein#end()
+" Required:
+set runtimepath+=/home/ty/.config/nvim/./dein/repos/github.com/Shougo/dein.vim
+
+" Required:
+if dein#load_state('/home/ty/.config/nvim/./dein')
+  call dein#begin('/home/ty/.config/nvim/./dein')
+
+  " Let dein manage dein
+  " Required:
+  call dein#add('/home/ty/.config/nvim/./dein/repos/github.com/Shougo/dein.vim')
+
+  call dein#add('Shougo/dein.vim')
+  call dein#add('Shougo/neocomplete.vim')
+  call dein#add('Shougo/vimproc.vim', {'build' : 'make'})
+  call dein#add('scrooloose/nerdtree')
+  call dein#add('vim-syntastic/syntastic')
+  call dein#add('romainl/Apprentice')
+  call dein#add('heavenshell/vim-pydocstring')
+  call dein#add('rust-lang/rust.vim')
+  call dein#add('whatyouhide/vim-gotham')
+  call dein#add('davidhalter/jedi-vim')
+  call dein#add('plytophogy/vim-virtualenv')
+  call dein#add('shime/vim-livedown')
+  call dein#add('tpope/vim-markdown')
+  call dein#add('zchee/deoplete-jedi')
+  call dein#add('wokalski/autocomplete-flow')
+  call dein#add('vim-airline/vim-airline')
+  call dein#add('vim-airline/vim-airline-themes')
+  call dein#add('pangloss/vim-javascript')
+  call dein#add('mxw/vim-jsx')
+
+  " Deoplete
+  call dein#add('Shougo/deoplete.nvim')
+  if !has('nvim')
+      call dein#add('roxma/nvim-yarp')
+      call dein#add('roxma/vim-hug-neovim-rpc')
+  endif
+
+  " Add or remove your plugins here like this:
+  "call dein#add('Shougo/neosnippet.vim')
+  "call dein#add('Shougo/neosnippet-snippets')
+
+  " Required:
+  call dein#end()
+  call dein#save_state()
+endif
+
+" Required:
+filetype plugin indent on
+syntax enable
+
+" If you want to install not installed plugins on startup.
+"if dein#check_install()
+"  call dein#install()
+"endif
+
+"End dein Scripts-------------------------
+
 
 " path to python
 let g:python2_host_prog = '/home/ty/.virtualenvs/neovim2/bin/python'
 let g:python3_host_prog = '/home/ty/.virtualenvs/neovim3/bin/python'
 
-"transparent
-hi NonText ctermbg=None
-hi Normal ctermfg=252 ctermbg=None
-
-colorscheme gotham256
+" colorscheme gotham256
+colorscheme gotham
 
 let g:quickrun_config = get(g:, 'quickrun_config', {})
 let g:quickrun_config._ = {
@@ -161,5 +178,3 @@ autocmd FileType javascript.jsx set softtabstop=2
 " vim-airline config
 " Don't forget to install powerline fonts
 let g:airline_powerline_fonts = 1
-
-
