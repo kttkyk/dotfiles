@@ -16,6 +16,10 @@ filetype on
 filetype plugin on
 filetype indent on
 
+" porject specific .vimrc
+set exrc
+set secure
+
 
 "dein Scripts-----------------------------
 if &compatible
@@ -23,21 +27,20 @@ if &compatible
 endif
 
 " Required:
-set runtimepath+=/home/ty/.config/nvim/./dein/repos/github.com/Shougo/dein.vim
+set runtimepath+=~/.config/nvim/./dein/repos/github.com/Shougo/dein.vim
 
 " Required:
-if dein#load_state('/home/ty/.config/nvim/./dein')
-  call dein#begin('/home/ty/.config/nvim/./dein')
+if dein#load_state('~/.config/nvim/./dein')
+  call dein#begin('~/.config/nvim/./dein')
 
   " Let dein manage dein
   " Required:
-  call dein#add('/home/ty/.config/nvim/./dein/repos/github.com/Shougo/dein.vim')
+  call dein#add('~/.config/nvim/./dein/repos/github.com/Shougo/dein.vim')
 
   call dein#add('Shougo/dein.vim')
   call dein#add('Shougo/neocomplete.vim')
   call dein#add('Shougo/vimproc.vim', {'build' : 'make'})
   call dein#add('scrooloose/nerdtree')
-  call dein#add('vim-syntastic/syntastic')
   call dein#add('romainl/Apprentice')
   call dein#add('heavenshell/vim-pydocstring')
   call dein#add('rust-lang/rust.vim')
@@ -52,6 +55,8 @@ if dein#load_state('/home/ty/.config/nvim/./dein')
   call dein#add('vim-airline/vim-airline-themes')
   call dein#add('pangloss/vim-javascript')
   call dein#add('mxw/vim-jsx')
+  call dein#add('jsfaint/gen_tags.vim')
+  call dein#add('w0rp/ale')
 
   " Deoplete
   call dein#add('Shougo/deoplete.nvim')
@@ -82,11 +87,13 @@ syntax enable
 
 
 " path to python
-let g:python2_host_prog = '/home/ty/.virtualenvs/neovim2/bin/python'
-let g:python3_host_prog = '/home/ty/.virtualenvs/neovim3/bin/python'
+" let g:python2_host_prog = '/home/ty/.virtualenvs/neovim2/bin/python'
+let g:python2_host_prog = '/usr/local/bin/python2-neovim'
+" let g:python3_host_prog = '/home/ty/.virtualenvs/neovim3/bin/python'
+let g:python3_host_prog = '/usr/local/bin/python3-neovim'
 
-" colorscheme gotham256
-colorscheme gotham
+colorscheme gotham256
+" colorscheme gotham
 
 let g:quickrun_config = get(g:, 'quickrun_config', {})
 let g:quickrun_config._ = {
@@ -100,18 +107,12 @@ let g:quickrun_config._ = {
       \ }
 nnoremap <expr><silent> <C-c> quickrun#is_running() ? quickrun#sweep_sessions() : "\<C-c>"
 
-"syntastic config
-"let g:syntastic_python_checkers = ['pyflakes', 'pep8']
-"autocmd BufNewFile,BufRead *.py let g:syntastic_check_on_open = 1
-let g:syntastic_mode_map = { 'mode': 'passive' }
-"let g:syntastic_python_checkers = ['pyflakes']
-
 " Deoplete config
 let g:deoplete#enable_at_startup = 1
 " Disable jedi completion to use deoplete completion
 let g:jedi#completions_enabled = 0 
 " Required when not using neosnippet for autocomplete-flow plugin
-let g:autocomplete_flow#insert_paren_after_function = 0
+" let g:autocomplete_flow#insert_paren_after_function = 0
 " Disable preview window
 set completeopt-=preview
 
@@ -140,7 +141,7 @@ autocmd FileType python setlocal completeopt-=preview
 " Stop auto filling import statement
 " let g:jedi#smart_auto_mappings = 0
 " Location of function signature in jedi-vim
-" let g:jedi#show_call_signatures = 2
+let g:jedi#show_call_signatures = 2
 
 
 " NerdTree
@@ -178,3 +179,46 @@ autocmd FileType javascript.jsx set softtabstop=2
 " vim-airline config
 " Don't forget to install powerline fonts
 let g:airline_powerline_fonts = 1
+
+" source ~/.config/nvim/gtags.vim
+
+" set indent for xv6
+autocmd BufNewFile,BufRead ~/work/xv6-public/*.c set tabstop=2
+autocmd BufNewFile,BufRead ~/work/xv6-public/*.c set shiftwidth=2
+autocmd BufNewFile,BufRead ~/work/xv6-public/*.c set softtabstop=2
+
+
+" configs for ALE
+" let g:ale_sign_error = '⨉'
+" let g:ale_sign_warning = '⚠'
+let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
+
+let g:ale_sign_column_always = 1
+
+" set when to lint
+let g:ale_lint_on_enter = 1
+let g:ale_lint_on_save = 1
+let g:ale_lint_on_text_changed = 'never'
+
+" Tell ALE not to overwrite QuickFix an Location List
+let g:ale_set_loclist = 0
+let g:ale_set_quickfix = 0
+let g:ale_open_list = 0
+let g:ale_keep_list_window_open = 0
+
+" linters
+let g:ale_linters = {
+\   'python': ['flake8'],
+\   'javascript.jsx': ['eslint'],
+\}
+
+
+" jump to ALE errors
+nmap <silent> <C-k> <Plug>(ale_previous_wrap)
+nmap <silent> <C-j> <Plug>(ale_next_wrap)
+
+" Tell airline to cooporate with ALE
+let g:airline#extensions#ale#enabled = 1
+
+" No highlighting
+let g:ale_set_highlights = 0
