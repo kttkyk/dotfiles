@@ -20,6 +20,7 @@ filetype indent on
 set exrc
 set secure
 
+highlight CursorLine cterm=NONE ctermbg=black
 
 "dein Scripts-----------------------------
 if &compatible
@@ -27,15 +28,15 @@ if &compatible
 endif
 
 " Required:
-set runtimepath+=~/.config/nvim/./dein/repos/github.com/Shougo/dein.vim
+set runtimepath+=~/.config/nvim/dein/repos/github.com/Shougo/dein.vim
 
 " Required:
-if dein#load_state('~/.config/nvim/./dein')
-  call dein#begin('~/.config/nvim/./dein')
+if dein#load_state('~/.config/nvim/dein')
+  call dein#begin('~/.config/nvim/dein')
 
   " Let dein manage dein
   " Required:
-  call dein#add('~/.config/nvim/./dein/repos/github.com/Shougo/dein.vim')
+  call dein#add('~/.config/nvim/dein/repos/github.com/Shougo/dein.vim')
 
   call dein#add('Shougo/dein.vim')
   call dein#add('Shougo/neocomplete.vim')
@@ -87,12 +88,13 @@ syntax enable
 
 
 " path to python
-" let g:python2_host_prog = '/home/ty/.virtualenvs/neovim2/bin/python'
-let g:python2_host_prog = '/usr/local/bin/python2-neovim'
-" let g:python3_host_prog = '/home/ty/.virtualenvs/neovim3/bin/python'
-let g:python3_host_prog = '/usr/local/bin/python3-neovim'
+" sym link /usr/local/bin/python2-neovim -> /home/ty/.virtualenvs/neovim2/bin/python
+let g:python2_host_prog = '/home/ty/.virtualenvs/pynvim2/bin/python'
+" let g:python2_host_prog = '/usr/local/bin/python2-neovim'
+let g:python3_host_prog = '/home/ty/.virtualenvs/pynvim3/bin/python'
+" let g:python3_host_prog = '/usr/local/bin/python3-neovim'
 
-colorscheme gotham256
+" colorscheme gotham256
 " colorscheme gotham
 
 let g:quickrun_config = get(g:, 'quickrun_config', {})
