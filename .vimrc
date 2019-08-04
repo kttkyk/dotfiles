@@ -56,7 +56,6 @@ if dein#load_state('~/.config/nvim/dein')
   call dein#add('vim-airline/vim-airline-themes')
   call dein#add('pangloss/vim-javascript')
   call dein#add('mxw/vim-jsx')
-  call dein#add('jsfaint/gen_tags.vim')
   call dein#add('w0rp/ale')
 
   " Deoplete
@@ -65,6 +64,13 @@ if dein#load_state('~/.config/nvim/dein')
       call dein#add('roxma/nvim-yarp')
       call dein#add('roxma/vim-hug-neovim-rpc')
   endif
+
+  " GNU global
+  if executable('global')
+      call dein#add('~/.config/nvim/dein/local/gtags')
+      call dein#add('jsfaint/gen_tags.vim')
+  endif
+
 
   " Add or remove your plugins here like this:
   "call dein#add('Shougo/neosnippet.vim')
