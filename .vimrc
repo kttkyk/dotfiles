@@ -10,7 +10,7 @@ set shiftwidth=4
 set softtabstop=4
 set expandtab
 set smartindent
-set listchars=tab:\ \ ,eol:$
+set listchars=tab:\ \ ,eol:↩ " leftwards arrow with hook
 set cursorline
 filetype on
 filetype plugin on
