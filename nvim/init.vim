@@ -13,22 +13,23 @@ set smartindent
 set listchars=tab:\ \ ,eol:↩ " leftwards arrow with hook
 set cursorline
 set nohlsearch
-filetype on
-filetype plugin on
-filetype indent on
+set t_Co=256 " 256 color
+filetype plugin indent on
+highlight CursorLine cterm=NONE ctermbg=black
 
 " porject specific .vimrc
 set exrc
 set secure
 
-highlight CursorLine cterm=NONE ctermbg=black
-
-filetype plugin indent on
-syntax enable
-
 " Load external vim files
 " Load dein
 source ~/.config/nvim/loaddein.vim
+" Syntax and colorscheme commands must be after dein is loaded (probably).
+" https://github.com/Shougo/dein.vim/blob/master/doc/dein.txt#L1064
+" https://qiita.com/mnbd/items/f9b0249a9d415e28bdd6
+syntax enable
+syntax on
+
 " Load python path
 source ~/.config/nvim/pythonpath.vim
 
@@ -37,20 +38,5 @@ source ~/.config/nvim/ale_config.vim
 " Load config for other plugins
 source ~/.config/nvim/plugin_config.vim
 
-" tex related
-let g:tex_flavor = "latex"
-autocmd BufNewFile,BufRead *.tex set spell
-
-if &compatible
-    set nocompatible
-endif
-
-" Don't know why but moving these commands above will break filetype?
-filetype plugin indent on
-set t_Co=256 " 256 color
-syntax on
-
-" set indent for xv6
-autocmd BufNewFile,BufRead ~/work/xv6-public/*.c set tabstop=2
-autocmd BufNewFile,BufRead ~/work/xv6-public/*.c set shiftwidth=2
-autocmd BufNewFile,BufRead ~/work/xv6-public/*.c set softtabstop=2
+" Others
+source ~/.config/nvim/misc.vim
