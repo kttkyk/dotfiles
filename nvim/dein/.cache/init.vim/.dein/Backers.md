@@ -1,0 +1,25 @@
+## 微信扫码赞助者
+
+- free-easy
+- sarene
+- tomspeak
+- robtrac
+- 葫芦小金刚
+- leo 陶
+- 飞翔的白斩鸡
+- mark_ll
+- 火冷
+- Solomon
+- 李宇星
+- Yus
+- IndexXuan
+- Sniper
+- 陈达野
+- 胖听
+- Jimmy
+- lightxue
+- 小亦俊
+- 周慎敏
+- 凤鸣
+- Wilson
+- Abel

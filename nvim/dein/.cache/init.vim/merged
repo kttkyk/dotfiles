@@ -1,0 +1,3 @@
+{'repo': v:val.repo, 'rev': get(v:val, 'rev', '')}
+0
+[{'rev': '', 'repo': '/home/ty/.config/nvim/dein/local/gtags/'}, {'rev': '', 'repo': 'Shougo/dein.vim'}, {'rev': '', 'repo': 'Shougo/vimproc.vim'}, {'rev': '', 'repo': 'jsfaint/gen_tags.vim'}, {'rev': '', 'repo': 'mxw/vim-jsx'}, {'rev': '', 'repo': 'neoclide/coc.nvim'}, {'rev': '', 'repo': 'plytophogy/vim-virtualenv'}, {'rev': '', 'repo': 'romainl/Apprentice'}, {'rev': '', 'repo': 'scrooloose/nerdtree'}, {'rev': '', 'repo': 'vim-airline/vim-airline'}, {'rev': '', 'repo': 'vim-airline/vim-airline-themes'}, {'rev': '', 'repo': 'w0rp/ale'}, {'rev': '', 'repo': 'whatyouhide/vim-gotham'}]

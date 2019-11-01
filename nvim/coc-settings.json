@@ -1,0 +1,6 @@
+{
+    "diagnostic.enable": false,
+    "python.linting.enabled": false,
+    "python.jediPath": "/home/ty/.virtualenvs/pynvim3/lib/python3.6/site-packages",
+    "python.venvPath": "/home/ty/.virtualenvs"
+}
