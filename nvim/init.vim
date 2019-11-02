@@ -24,7 +24,7 @@ set secure
 " Load external vim files
 " Load dein
 source ~/.config/nvim/loaddein.vim
-" Syntax and colorscheme commands must be after dein is loaded (probably).
+" Syntax and colorscheme commands must be after the loading of dein(probably).
 " https://github.com/Shougo/dein.vim/blob/master/doc/dein.txt#L1064
 " https://qiita.com/mnbd/items/f9b0249a9d415e28bdd6
 syntax enable

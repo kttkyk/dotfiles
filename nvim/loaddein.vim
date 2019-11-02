@@ -9,7 +9,9 @@ set runtimepath+=~/.config/nvim/dein/repos/github.com/Shougo/dein.vim
 
 " Required:
 if dein#load_state('~/.config/nvim/dein')
-    call dein#begin('~/.config/nvim/dein', vimrcs)
+    call dein#begin('~/.config/nvim/dein')
+
+    let s:toml_dir = expand('~/.config/nvim/dein/toml')
 
     " Let dein manage dein
     " Required:
@@ -17,31 +19,31 @@ if dein#load_state('~/.config/nvim/dein')
 
     " Plugin manager
     call dein#add('Shougo/dein.vim')
+
     " Execute command asynchronously
-    call dein#add('Shougo/vimproc.vim', {'build' : 'make'})
-    " File manager
-    call dein#add('scrooloose/nerdtree')
+    call dein#load_toml(s:toml_dir . '/vimproc.vim.toml')
+    " Filer
+    call dein#load_toml(s:toml_dir . '/nerdtree.toml')
     " Color scheme
-    call dein#add('romainl/Apprentice')
+    call dein#load_toml(s:toml_dir . '/Apprentice.toml')
     " Load current virtualenv to PYTHONPATH
-    call dein#add('plytophogy/vim-virtualenv')
+    call dein#load_toml(s:toml_dir . '/vim-virtualenv.toml')
     " Status bar
-    call dein#add('vim-airline/vim-airline')
-    call dein#add('vim-airline/vim-airline-themes')
+    call dein#load_toml(s:toml_dir . '/vim-airline.toml')
+    call dein#load_toml(s:toml_dir . '/vim-airline-themes.toml')
     " Understand jsx format
-    call dein#add('mxw/vim-jsx')
+    call dein#load_toml(s:toml_dir . '/vim-jsx.toml')
     " Linter
-    call dein#add('w0rp/ale')
+    call dein#load_toml(s:toml_dir . '/ale.toml')
     " Language server protocol client
-    call dein#add('neoclide/coc.nvim', {'build': './install.sh nightly'})
+    call dein#load_toml(s:toml_dir . '/coc.nvim.toml')
 
     " GNU global
     if executable('global')
         " To use Gtags command execute GenGTags before it
+        call dein#load_toml(s:toml_dir . '/gen_tags.vim.toml')
         call dein#add('~/.config/nvim/dein/local/gtags')
-        call dein#add('jsfaint/gen_tags.vim') " GenGtags
     endif
-
 
     " Required:
     call dein#end()
