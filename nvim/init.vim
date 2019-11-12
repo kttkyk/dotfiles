@@ -32,7 +32,7 @@ source ~/.config/nvim/loaddein.vim
 " https://qiita.com/mnbd/items/f9b0249a9d415e28bdd6
 syntax enable
 syntax on
-colorscheme nord
+silent! colorscheme nord
 
 " Load python path
 source ~/.config/nvim/pythonpath.vim
