@@ -1,8 +1,11 @@
 {
     "diagnostic.enable": false,
-    "python.linting.enabled": false,
-    "python.jediPath": "/home/ty/.virtualenvs/pynvim3/lib/python3.6/site-packages",
-    "python.venvPath": "/home/ty/.virtualenvs",
+    "python.linting.enabled": true,
+
+    "python.jediPath": "~/.virtualenvs/pynvim3/lib/python3.6/site-packages",
+    "python.venvPath": "~/.virtualenvs",
+
+    "python.linting.pylintPath": "~/.virtualenvs/coc/bin/pylint",
 
     "tssserver.enableJavascript": true,
     "eslint.filetypes": ["javascript", "typescript", "typescriptreact", "javascript.jsx", "typescript.tsx"]

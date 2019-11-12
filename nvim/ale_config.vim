@@ -23,8 +23,8 @@ let g:ale_linters = {
             \}
 
 " jump to ALE errors
-nmap <silent> <C-k> <Plug>(ale_previous_wrap)
-nmap <silent> <C-j> <Plug>(ale_next_wrap)
+" nmap <silent> <C-k> <Plug>(ale_previous_wrap)
+" nmap <silent> <C-j> <Plug>(ale_next_wrap)
 
 " Tell airline to cooporate with ALE
 let g:airline#extensions#ale#enabled = 1

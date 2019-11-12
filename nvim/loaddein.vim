@@ -26,6 +26,7 @@ if dein#load_state('~/.config/nvim/dein')
     call dein#load_toml(s:toml_dir . '/nerdtree.toml')
     " Color scheme
     call dein#load_toml(s:toml_dir . '/Apprentice.toml')
+    call dein#load_toml(s:toml_dir . '/nord.toml')
     " Load current virtualenv to PYTHONPATH
     call dein#load_toml(s:toml_dir . '/vim-virtualenv.toml')
     " Status bar

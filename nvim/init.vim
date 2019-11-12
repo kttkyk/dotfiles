@@ -15,7 +15,10 @@ set cursorline
 set nohlsearch
 set t_Co=256 " 256 color
 filetype plugin indent on
-highlight CursorLine cterm=NONE ctermbg=black
+" highlight CursorLine cterm=NONE ctermbg=black
+" switching buffers
+nnoremap <silent> <C-j> :bprev<CR>
+nnoremap <silent> <C-k> :bnext<CR>
 
 " porject specific .vimrc
 set exrc
@@ -29,6 +32,7 @@ source ~/.config/nvim/loaddein.vim
 " https://qiita.com/mnbd/items/f9b0249a9d415e28bdd6
 syntax enable
 syntax on
+colorscheme nord
 
 " Load python path
 source ~/.config/nvim/pythonpath.vim
