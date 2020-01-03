@@ -4,7 +4,7 @@ set title
 set ruler
 set list
 set showmatch
-set autoindent
+set cindent
 set tabstop=4
 set shiftwidth=4
 set softtabstop=4
@@ -17,8 +17,8 @@ set t_Co=256 " 256 color
 filetype plugin indent on
 " highlight CursorLine cterm=NONE ctermbg=black
 " switching buffers
-nnoremap <silent> <C-j> :bprev<CR>
-nnoremap <silent> <C-k> :bnext<CR>
+nnoremap <silent> <C-j> :bnext<CR>
+nnoremap <silent> <C-k> :bprev<CR>
 
 " porject specific .vimrc
 set exrc
@@ -37,8 +37,6 @@ silent! colorscheme nord
 " Load python path
 source ~/.config/nvim/pythonpath.vim
 
-" Load config for ALE
-source ~/.config/nvim/ale_config.vim
 " Load config for other plugins
 source ~/.config/nvim/plugin_config.vim
 

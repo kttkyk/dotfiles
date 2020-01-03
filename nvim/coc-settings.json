@@ -1,12 +1,32 @@
 {
-    "diagnostic.enable": false,
+    "diagnostic.errorSign": "✘",
+    "diagnostic.warningSign": "●",
+    "diagnostic.infoSign": "●",
+
+    "diagnostic.enable": true,
     "python.linting.enabled": true,
 
     "python.jediPath": "~/.virtualenvs/pynvim3/lib/python3.6/site-packages",
     "python.venvPath": "~/.virtualenvs",
 
-    "python.linting.pylintPath": "~/.virtualenvs/coc/bin/pylint",
+    "python.linting.pylintPath": "~/.virtualenvs/pynvim3/bin/pylint",
+
 
     "tssserver.enableJavascript": true,
-    "eslint.filetypes": ["javascript", "typescript", "typescriptreact", "javascript.jsx", "typescript.tsx"]
+    "eslint.filetypes": ["javascript", "typescript", "typescriptreact", "javascript.jsx", "typescript.tsx"],
+
+    "html.format.enable": true,
+
+    "languageserver": {
+        "ccls": {
+            "command": "ccls",
+            "filetypes": ["c", "cpp", "cuda", "objc", "objcpp"],
+            "rootPatterns": [".ccls-root", "compile_commands.json"],
+            "initializationOptions": {
+                "cache": {
+                    "directory": ".ccls-cache"
+                }
+            }
+        }
+    }
 }

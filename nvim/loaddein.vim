@@ -34,8 +34,6 @@ if dein#load_state('~/.config/nvim/dein')
     call dein#load_toml(s:toml_dir . '/vim-airline-themes.toml')
     " Understand jsx format
     call dein#load_toml(s:toml_dir . '/vim-jsx.toml')
-    " Linter
-    call dein#load_toml(s:toml_dir . '/ale.toml')
     " Language server protocol client
     call dein#load_toml(s:toml_dir . '/coc.nvim.toml')
 
