@@ -9,7 +9,11 @@
     "python.jediPath": "~/.virtualenvs/pynvim3/lib/python3.6/site-packages",
     "python.venvPath": "~/.virtualenvs",
 
-    "python.linting.pylintPath": "~/.virtualenvs/pynvim3/bin/pylint",
+    "python.linting.pylintEnabled": false,
+
+    "python.linting.flake8Path": "~/.virtualenvs/pynvim3/bin/flake8",
+    "python.linting.flake8Enabled": true,
+    "python.linting.flake8Args": ["--ignore=E731,E221,F401,E501"],
 
 
     "tssserver.enableJavascript": true,
