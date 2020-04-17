@@ -2,7 +2,12 @@
 repo = 'neoclide/coc.nvim'
 build = './install.sh nightly'
 hook_add = '''
-if exists(":CocInfo")
+" if exists(":CocInfo")
+    " TODO: fix
+    " this if will always be false.
+    " plugin functions are not sourced when executing scripts in hook_add.
+if isdirectory(expand('~/dotfiles/nvim/dein/repos/github.com/neoclide/coc.nvim'))
+
     " if hidden is not set, TextEdit might fail.
     set hidden
 

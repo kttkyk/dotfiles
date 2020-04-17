@@ -16,6 +16,7 @@ set nohlsearch
 set t_Co=256 " 256 color
 set signcolumn=yes " Show sign column on the left, even if there is no sign to show
 filetype plugin indent on
+set clipboard=unnamedplus " Enable yanking to system clipboard (require xcopy or xsel)
 " highlight CursorLine cterm=NONE ctermbg=black
 " switching buffers
 nnoremap <silent> <C-j> :bnext<CR>
