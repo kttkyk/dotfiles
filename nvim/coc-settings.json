@@ -6,8 +6,7 @@
     "diagnostic.enable": true,
     "python.linting.enabled": true,
 
-    "python.jediPath": "~/.virtualenvs/pynvim3/lib/python3.6/site-packages",
-    "python.venvPath": "~/.virtualenvs",
+    "python.jediEnabled": false,
 
     "python.linting.pylintEnabled": false,
 
