@@ -22,6 +22,8 @@ set clipboard=unnamedplus " Enable yanking to system clipboard (require xcopy or
 nnoremap <silent> <C-j> :bnext<CR>
 nnoremap <silent> <C-k> :bprev<CR>
 
+let g:asmsyntax = 'nasm' " set assembly syntax to nasm
+
 " porject specific .vimrc
 set exrc
 set secure
