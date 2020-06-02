@@ -22,7 +22,9 @@ set clipboard=unnamedplus " Enable yanking to system clipboard (require xcopy or
 nnoremap <silent> <C-j> :bnext<CR>
 nnoremap <silent> <C-k> :bprev<CR>
 
-let g:asmsyntax = 'nasm' " set assembly syntax to nasm
+" set assembly syntax to nasm  for *.asm files
+" *.S files will be treated as gas syntax
+autocmd BufNewFile,BufRead *.asm let g:asmsyntax = 'nasm'
 
 " porject specific .vimrc
 set exrc
@@ -43,6 +45,9 @@ source ~/.config/nvim/pythonpath.vim
 
 " Load config for other plugins
 source ~/.config/nvim/plugin_config.vim
+
+" Load config for coc
+source ~/.config/nvim/coc_config.vim
 
 " Others
 source ~/.config/nvim/misc.vim
