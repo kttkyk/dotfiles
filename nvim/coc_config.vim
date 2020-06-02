@@ -6,14 +6,14 @@ call coc#config('languageserver', {
             \   "command": "dotnet",
             \   "args": [
             \     "exec",
-            \     "/usr/local/src/python-language-server/output/bin/Debug/Microsoft.Python.LanguageServer.dll"
+            \     "/opt/python-language-server/output/bin/Debug/Microsoft.Python.LanguageServer.dll"
             \   ],
             \   "filetypes": ["python"],
             \   "initializationOptions": {
             \     "interpreter": {
             \       "properties": {
             \         "InterpreterPath": "/usr/bin/python3",
-            \         "DatabasePath": "/usr/local/src/python-language-server/output",
+            \         "DatabasePath": "/opt/python-language-server/output",
             \         "Version": "3"
             \       }
             \     },

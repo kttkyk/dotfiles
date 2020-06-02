@@ -47,6 +47,7 @@ source ~/.config/nvim/pythonpath.vim
 source ~/.config/nvim/plugin_config.vim
 
 " Load config for coc
+" TODO: source only if coc is installed
 source ~/.config/nvim/coc_config.vim
 
 " Others
