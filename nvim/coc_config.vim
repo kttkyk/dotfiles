@@ -1,5 +1,5 @@
 " If coc-python is not installed
-if !isdirectory(expand('~/.config/coc/extensions/node_modules/coc-python/')) && exists("/opt/python-language-server/")
+if !isdirectory(expand('~/.config/coc/extensions/node_modules/coc-python/')) && isdirectory("/opt/python-language-server/")
     " Disable coc-python
     " autocmd BufNewFile,BufRead *.py call CocAction('toggleExtension', 'coc-python')
 
