@@ -3,6 +3,7 @@ if !isdirectory(expand('~/.config/coc/extensions/node_modules/coc-python/')) && 
     " Disable coc-python
     " autocmd BufNewFile,BufRead *.py call CocAction('toggleExtension', 'coc-python')
 
+    let python3_ver = system("/usr/bin/python3 --version | cut -d ' ' -f 2")
     call coc#config('languageserver', {
                 \ "mpls": {
                 \   "command": "dotnet",
@@ -16,7 +17,7 @@ if !isdirectory(expand('~/.config/coc/extensions/node_modules/coc-python/')) && 
                 \       "properties": {
                 \         "InterpreterPath": "/usr/bin/python3",
                 \         "DatabasePath": "/opt/python-language-server/output",
-                \         "Version": "3"
+                \         "Version": python3_ver
                 \       }
                 \     },
                 \     "searchPaths": [
