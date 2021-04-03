@@ -10,7 +10,7 @@ end
 
 define pwn
 source /opt/pwndbg/gdbinit.py
-set telescope-skip-reapeating-val off
+# set telescope-skip-reapeating-val off
 end
 
 define gef
