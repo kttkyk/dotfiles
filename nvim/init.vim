@@ -46,9 +46,10 @@ source ~/.config/nvim/pythonpath.vim
 " Load config for other plugins
 source ~/.config/nvim/plugin_config.vim
 
-" Load config for coc
-" TODO: source only if coc is installed
-source ~/.config/nvim/coc_config.vim
-
 " Others
 source ~/.config/nvim/misc.vim
+
+
+lua << EOF
+require('loadlsp')
+EOF
