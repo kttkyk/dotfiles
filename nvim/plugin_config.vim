@@ -18,4 +18,3 @@ let g:airline_powerline_fonts = 1
 " Something like `completeopt=popup` ini vim 8.1.1880
 " https://github.com/neovim/neovim/issues/10996
 let g:float_preview#docked = 0
-
