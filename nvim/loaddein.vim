@@ -21,6 +21,8 @@ if dein#load_state('~/.config/nvim/dein')
     call dein#load_toml(s:toml_dir . '/vimproc.vim.toml')
     " Collection of common configurations for Neovim's built-in language server client
     call dein#load_toml(s:toml_dir . '/nvim-lspconfig.toml')
+    " Auto completion framework for nvim built-in lsp
+    call dein#load_toml(s:toml_dir . '/completion-nvim.toml')
     " Filer
     call dein#load_toml(s:toml_dir . '/nerdtree.toml')
     " Color scheme

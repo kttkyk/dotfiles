@@ -1,0 +1,2 @@
+[[plugins]]
+repo = 'nvim-lua/completion-nvim'

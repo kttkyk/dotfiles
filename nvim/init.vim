@@ -18,11 +18,6 @@ set signcolumn=yes " Show sign column on the left, even if there is no sign to s
 filetype plugin indent on
 set clipboard=unnamedplus " Enable yanking to system clipboard (require xcopy or xsel)
 
-" Stop opening preview window when selecting from omnicompletion menu
-" float-preview.nvim instead
-" https://github.com/neovim/nvim-lspconfig/issues/378
-" TODO: Switch to completeopt=popup if it's implemented
-set completeopt-=preview
 " When using omnicomplete don't select the first item,
 " but select the item with the longest common string.
 " Show menu even if there is only one item.

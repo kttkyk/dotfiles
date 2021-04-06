@@ -1,9 +1,38 @@
 local nvim_lsp = require('lspconfig')
 local on_attach = function(client, bufnr)
+    -- https://github.com/nvim-lua/completion-nvim#setup
+    require('completion').on_attach(client)
+    -- https://github.com/nvim-lua/completion-nvim#recommended-setting
+    -- Set completeopt to have a better completion experience
+    -- set completeopt=menuone,noinsert,noselect
+    vim.o.completeopt='menuone,noinsert,noselect'
+    -- Avoid showing message extra message when using completion
+    -- set shortmess+=c
+    vim.o.shortmess = vim.o.shortmess .. 'c'
+
+    -- Disable virtual text diagnostics
+    -- :help lsp-handler-configuration
+    -- https://zenn.dev/garypippi/articles/fe72e26c25563e4c44a9#virtual-text%E3%81%A7%E8%A1%A8%E7%A4%BA%E3%81%97%E3%81%AA%E3%81%84%E8%A8%AD%E5%AE%9A
+    vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
+    vim.lsp.diagnostic.on_publish_diagnostics, { virtual_text = false })
+    -- Open diagnostic window when the cursor moved to a line with some diagnostics.
+    -- CursorMoved event could be slow, since it's hooked everytime the cursor moves.
+    -- vim.cmd('autocmd CursorMoved * lua vim.lsp.util.show_line_diagnostics()')
+    -- CursorHold event may be more efficient,
+    vim.cmd('autocmd CursorHold * lua vim.lsp.diagnostic.show_line_diagnostics()')
+    -- although I will have to wait for 4 seconds until the window pops up.
+    -- vim.cmd('autocmd CursorHold * lua vim.lsp.util.show_line_diagnostics()')
+    -- The time can be configured by changing updatetime.
+    -- But since updatetime is used to check whether to write swap file or not,
+    -- configuring it could also slow neovim down.
+    vim.o.updatetime = 500 -- 0.5 sec
+
+
+    -- See :help nvim_buf_set_keymap() for info
     local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
     local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
 
-    buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
+    -- buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
 
     -- Mappings.
     local opts = { noremap=true, silent=true }
@@ -23,31 +52,21 @@ local on_attach = function(client, bufnr)
     buf_set_keymap('n', ']d', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', opts)
     buf_set_keymap('n', '<space>q', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', opts)
 
-    -- Map Ctrl+n to trigger omni completion.
-    -- Too lazy to type Ctrl+x Ctrl+o every time.
-    buf_set_keymap('i', '<c-n>', '<c-x><c-o>', opts)
-    -- buf_set_keymap('i', '<c-p>', '<c-x><c-o>', opts)
-
-    -- Set some keybinds conditional on server capabilities
-    if client.resolved_capabilities.document_formatting then
-        buf_set_keymap("n", "<space>f", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
-    elseif client.resolved_capabilities.document_range_formatting then
-        buf_set_keymap("n", "<space>f", "<cmd>lua vim.lsp.buf.range_formatting()<CR>", opts)
-    end
-
-    -- Set autocommands conditional on server_capabilities
-    if client.resolved_capabilities.document_highlight then
-        vim.api.nvim_exec([[
-        hi LspReferenceRead cterm=bold ctermbg=red guibg=LightYellow
-        hi LspReferenceText cterm=bold ctermbg=red guibg=LightYellow
-        hi LspReferenceWrite cterm=bold ctermbg=red guibg=LightYellow
-        augroup lsp_document_highlight
-        autocmd! * <buffer>
-        autocmd CursorHold <buffer> lua vim.lsp.buf.document_highlight()
-        autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
-        augroup END
-        ]], false)
-    end
+    -- Configure the appearance of diagnostics.
+    -- :help lsp-highlight-diagnostics
+    -- https://vim-jp.org/vimdoc-ja/sign.html
+    -- https://coffeeandcontemplation.dev/
+    -- https://zenn.dev/garypippi/articles/fe72e26c25563e4c44a9
+    vim.api.nvim_exec([[
+        sign define LspDiagnosticsSignError text=✘
+        sign define LspDiagnosticsSignWarning text=●
+        sign define LspDiagnosticsSignInformation text=●
+        sign define LspDiagnosticsSignHint text=●
+        hi LspDiagnosticsSignError ctermfg=red
+        hi LspDiagnosticsSignWarning ctermfg=yellow
+        hi LspDiagnosticsSignInformation ctermfg=blue
+        hi LspDiagnosticsSignHint ctermfg=green
+    ]], false)
 end
 
 
