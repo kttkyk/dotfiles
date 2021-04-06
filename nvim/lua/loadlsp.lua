@@ -23,6 +23,11 @@ local on_attach = function(client, bufnr)
     buf_set_keymap('n', ']d', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', opts)
     buf_set_keymap('n', '<space>q', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', opts)
 
+    -- Map Ctrl+n to trigger omni completion.
+    -- Too lazy to type Ctrl+x Ctrl+o every time.
+    buf_set_keymap('i', '<c-n>', '<c-x><c-o>', opts)
+    -- buf_set_keymap('i', '<c-p>', '<c-x><c-o>', opts)
+
     -- Set some keybinds conditional on server capabilities
     if client.resolved_capabilities.document_formatting then
         buf_set_keymap("n", "<space>f", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
@@ -90,6 +95,28 @@ function load_pyls_ms(nvim_lsp, python_path, site_packages_path, python_ver)
     }
 end
 
+function load_ccls(nvim_lsp)
+    -- root_dir has to be a function which returns the root directory
+    -- https://github.com/neovim/nvim-lspconfig/blob/master/doc/lspconfig.txt
+    function getcwd(fname)
+        -- just ignore fname argument
+        -- it's just required to match callback function signature
+        -- remove new line from the end
+        return system("pwd"):gsub("\n", "")
+    end
+    function root_dir(fname)
+        return nvim_lsp.util.root_pattern("compile_commands.json", "compile_flags.txt", ".git")(fname) or getcwd(fname)
+    end
+    nvim_lsp['ccls'].setup{
+        cmd = { "ccls" },
+        on_attach = on_attach,
+        init_options = {
+            cache = { directory = ".ccls-cache" }
+        },
+        root_dir = root_dir
+    }
+end
+
 local venv = os.getenv("VIRTUAL_ENV")
 if venv ~= nil then -- not equal is '~=', and not '!=' in lua
     local python_path = venv .. "/bin/python"
@@ -102,3 +129,5 @@ else
     local python_ver = system(python_path .. " --version | cut -d ' ' -f 2")
     load_pyls_ms(nvim_lsp, python_path, site_packages_path, python_ver)
 end
+
+load_ccls(nvim_lsp)

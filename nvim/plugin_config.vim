@@ -19,7 +19,3 @@ let g:airline_powerline_fonts = 1
 " https://github.com/neovim/neovim/issues/10996
 let g:float_preview#docked = 0
 
-" Stop opening preview window when selecting from omnicompletion menu
-" Use above float-preview.nvim instead
-" https://github.com/neovim/nvim-lspconfig/issues/378
-set completeopt-=preview
