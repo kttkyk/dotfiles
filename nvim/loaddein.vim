@@ -28,13 +28,12 @@ if dein#load_state('~/.config/nvim/dein')
     " Color scheme
     call dein#load_toml(s:toml_dir . '/Apprentice.toml')
     call dein#load_toml(s:toml_dir . '/nord.toml')
+    call dein#load_toml(s:toml_dir . '/gruvbox.toml')
     " Status bar
     call dein#load_toml(s:toml_dir . '/vim-airline.toml')
     call dein#load_toml(s:toml_dir . '/vim-airline-themes.toml')
     " Understand jsx format
     call dein#load_toml(s:toml_dir . '/vim-jsx.toml')
-    " Completion preview window based on neovim's floating window
-    call dein#load_toml(s:toml_dir . '/float-preview.nvim.toml')
 
     " GNU global
     if executable('global')

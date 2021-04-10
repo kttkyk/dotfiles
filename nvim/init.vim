@@ -24,7 +24,7 @@ set clipboard=unnamedplus " Enable yanking to system clipboard (require xcopy or
 " https://vim.fandom.com/wiki/Make_Vim_completion_popup_menu_work_just_like_in_an_IDE
 " https://vim-jp.org/vimdoc-ja/options.html#'completeopt'
 " https://note.com/yasukotelin/n/na87dc604e042
-set completeopt+=longest,menuone
+set completeopt+=menuone
 
 " highlight CursorLine cterm=NONE ctermbg=black
 " switching buffers
@@ -47,7 +47,12 @@ source ~/.config/nvim/loaddein.vim
 " https://qiita.com/mnbd/items/f9b0249a9d415e28bdd6
 syntax enable
 syntax on
-silent! colorscheme nord
+" silent! colorscheme nord
+colorscheme gruvbox
+" No idea what this does but required for gruvbox & transparent terminal
+" https://github.com/morhetz/gruvbox/issues/375#issuecomment-753020615
+" https://qiita.com/s4kr4/items/b2c1b692ec430fe24f15#vimrc
+autocmd VimEnter * hi Normal ctermbg=none
 
 " Load python path
 source ~/.config/nvim/pythonpath.vim
