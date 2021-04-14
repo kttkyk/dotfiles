@@ -67,6 +67,17 @@ local on_attach = function(client, bufnr)
         hi LspDiagnosticsSignInformation ctermfg=blue
         hi LspDiagnosticsSignHint ctermfg=green
     ]], false)
+
+    -- Disable auto signature option in to avoid getting error at
+    -- lsp.util.focusable_preview() called in util.lua in neovim.
+    -- Call chain is probably
+    -- autoOpenSignatureHelp @ completion-nvim
+    -- vim.lsp.util.focusable_preview @ neovim:util.lua
+    -- focusable_float
+    -- api.nvim_set_current_win(win) (fail here)
+    -- https://github.com/nvim-lua/completion-nvim/blob/dc4cf56e78aa5e7e782064411b22460597d72c36/lua/completion/signature_help.lua
+    -- https://github.com/neovim/neovim/blob/370469be250de546df1a674d6d5cd41283bb6b3c/runtime/lua/vim/lsp/util.lua
+    vim.g.completion_enable_auto_signature = 0
 end
 
 
@@ -135,16 +146,6 @@ function load_ccls(nvim_lsp)
         root_dir = root_dir
     }
 
-    -- Disable auto signature option in to avoid getting error at
-    -- lsp.util.focusable_preview() called in util.lua in neovim.
-    -- Call chain is probably
-    -- autoOpenSignatureHelp @ completion-nvim
-    -- vim.lsp.util.focusable_preview @ neovim:util.lua
-    -- focusable_float
-    -- api.nvim_set_current_win(win) (fail here)
-    -- https://github.com/nvim-lua/completion-nvim/blob/dc4cf56e78aa5e7e782064411b22460597d72c36/lua/completion/signature_help.lua
-    -- https://github.com/neovim/neovim/blob/370469be250de546df1a674d6d5cd41283bb6b3c/runtime/lua/vim/lsp/util.lua
-    vim.g.completion_enable_auto_signature = 0
 end
 
 local venv = os.getenv("VIRTUAL_ENV")
