@@ -58,7 +58,7 @@ fi
 
 function _update_ps1() {
     # PS1="$($GOPATH/bin/powerline-go -newline -error $? -jobs $(jobs -p | wc -l))"
-    PS1="$($GOPATH/bin/powerline-go -modules venv,user,host,ssh,cwd,perms,git,hg,jobs,exit -newline -error $? -jobs $(jobs -p | wc -l))"
+    PS1="$(/usr/local/bin/powerline-go -modules venv,user,host,ssh,cwd,perms,git,hg,jobs,exit -newline -error $? -jobs $(jobs -p | wc -l))"
 
     # Uncomment the following line to automatically clear errors after showing
     # them once. This not only clears the error for powerline-go, but also for
@@ -68,7 +68,7 @@ function _update_ps1() {
     #set "?"
 }
 
-if [ "$TERM" != "linux" ] && [ -f "$GOPATH/bin/powerline-go" ]; then
+if [ "$TERM" != "linux" ] && [ -f "/usr/local/bin/powerline-go" ]; then
     PROMPT_COMMAND="_update_ps1; $PROMPT_COMMAND"
 elif [ "$color_prompt" = yes ]; then
     PS1='${debian_chroot:+($debian_chroot)}\[\033[0m\033[1;32m\]\u\[\033[1;36m\] @ \[\033[1;36m\]\h \w\[\033[1;32m\]$(__git_ps1)\n\[\033[1;32m\]└─\[\033[0m\033[1;32m\]\[\033[0m\] \$ '
