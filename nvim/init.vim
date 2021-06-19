@@ -63,7 +63,6 @@ source ~/.config/nvim/plugin_config.vim
 " Others
 source ~/.config/nvim/misc.vim
 
-
 lua << EOF
 require('loadlsp')
 EOF

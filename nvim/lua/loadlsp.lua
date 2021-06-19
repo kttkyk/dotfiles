@@ -88,6 +88,15 @@ function system(cmd)
     return result
 end
 
+-- root_dir has to be a function which returns the root directory
+-- https://github.com/neovim/nvim-lspconfig/blob/master/doc/lspconfig.txt
+function getcwd(fname)
+    -- just ignore fname argument
+    -- it's just required to match callback function signature
+    -- remove new line from the end
+    return system("pwd"):gsub("\n", "")
+end
+
 
 function load_pyls_ms(nvim_lsp, python_path, site_packages_path, python_ver)
     -- Reference: https://github.com/neovim/nvim-lspconfig/blob/master/CONFIG.md#pyls_ms
@@ -112,7 +121,9 @@ function load_pyls_ms(nvim_lsp, python_path, site_packages_path, python_ver)
                 site_packages_path,
             }
         },
-        -- root_dir = vim's starting directory
+        -- I have no idea, but suddenly root_dir is now required to run mpls
+        -- took me a long time to work it out.
+        root_dir = getcwd,
         settings = {
             python = {
                 analysis = {
@@ -126,14 +137,6 @@ function load_pyls_ms(nvim_lsp, python_path, site_packages_path, python_ver)
 end
 
 function load_ccls(nvim_lsp)
-    -- root_dir has to be a function which returns the root directory
-    -- https://github.com/neovim/nvim-lspconfig/blob/master/doc/lspconfig.txt
-    function getcwd(fname)
-        -- just ignore fname argument
-        -- it's just required to match callback function signature
-        -- remove new line from the end
-        return system("pwd"):gsub("\n", "")
-    end
     function root_dir(fname)
         return nvim_lsp.util.root_pattern("compile_commands.json", "compile_flags.txt", ".git")(fname) or getcwd(fname)
     end
@@ -151,13 +154,13 @@ end
 local venv = os.getenv("VIRTUAL_ENV")
 if venv ~= nil then -- not equal is '~=', and not '!=' in lua
     local python_path = venv .. "/bin/python"
-    local site_packages_path = system("ls " .. venv .. "/lib | head -n 1") .. "/site-packages"
-    local python_ver = system(python_path .. " --version | cut -d ' ' -f 2")
+    local site_packages_path = venv .. "/lib/" .. system("ls " .. venv .. "/lib | head -n 1 | tr -d '\n'") .. "/site-packages"
+    local python_ver = system(python_path .. " --version | cut -d ' ' -f 2 | tr -d '\n'")
     load_pyls_ms(nvim_lsp, python_path, site_packages_path, python_ver)
 else
     local python_path = "/usr/bin/python3"
     local site_packages_path = "/usr/lib/python3/dist-packages"
-    local python_ver = system(python_path .. " --version | cut -d ' ' -f 2")
+    local python_ver = system(python_path .. " --version | cut -d ' ' -f 2 | tr -d '\n'")
     load_pyls_ms(nvim_lsp, python_path, site_packages_path, python_ver)
 end
 
